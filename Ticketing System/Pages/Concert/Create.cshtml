@@ -1,0 +1,50 @@
+﻿@page
+@model Ticketing_System.Pages.Concert.CreateModel
+@{
+}
+
+
+<h1>Concert</h1>
+<hr />
+<h1>Create New</h1>
+<form method="post">
+    <div >
+        <label asp-for="InputModel.Name"></label>
+        <input asp-for="InputModel.Name" class="form-control" />
+        <span asp-validation-for="InputModel.Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="InputModel.Description"></label>
+        <textarea asp-for="InputModel.Description" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="InputModel.Description" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="InputModel.AdultPrice"></label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">&euro;</div>
+            </div>
+            <input asp-for="InputModel.AdultPrice" class="form-control" />
+        </div>
+        <span asp-validation-for="InputModel.AdultPrice" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="InputModel.ChildPrice"></label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">&euro;</div>
+            </div>
+            <input asp-for="InputModel.ChildPrice" class="form-control" />
+        </div>
+        <span asp-validation-for="InputModel.ChildPrice" class="text-danger"></span>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

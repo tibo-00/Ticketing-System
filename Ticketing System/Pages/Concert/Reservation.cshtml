@@ -1,0 +1,58 @@
+﻿@page "{id}"
+@model Ticketing_System.Pages.Concert.ReservationModel
+@{
+}
+
+<h1>Reservation</h1>
+<hr />
+
+<div class="container">
+    <h4>@Model.Performance.Concert.Name</h4>
+
+    <div class="row">
+        <div><strong>Date</strong></div>
+        <div>@Model.Performance.StartTime.ToString("dd MMMM yyyy")</div>
+    </div>
+    <div class="row">
+        <div><strong>Time</strong></div>
+        <div>@Model.Performance.StartTime.ToString("HH:mm") </div>
+    </div>
+    <div class="row">
+        <div><strong>Hall</strong></div>
+        <div> @Model.Performance.ConcertHall.Name</div>
+    </div>
+    <form method="post">
+        <div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div>
+            <label asp-for="InputModel.FirstName"></label>
+            <input asp-for="InputModel.FirstName" class="form-control" />
+            <span asp-validation-for="InputModel.FirstName" class="text-danger"></span>
+        </div>
+                <div>
+            <label asp-for="InputModel.LastName"></label>
+            <input asp-for="InputModel.LastName" class="form-control" />
+            <span asp-validation-for="InputModel.LastName" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="InputModel.NumberOfAdults"></label>
+            <input asp-for="InputModel.NumberOfAdults" class="form-control">
+            <span asp-validation-for="InputModel.NumberOfAdults" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="InputModel.NumberOfChildren"></label>
+            <input asp-for="InputModel.NumberOfChildren" class="form-control">
+            <span asp-validation-for="InputModel.NumberOfChildren" class="text-danger"></span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

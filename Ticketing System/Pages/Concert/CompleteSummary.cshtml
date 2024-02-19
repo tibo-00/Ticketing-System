@@ -1,0 +1,29 @@
+﻿@page
+@model Ticketing_System.Pages.Concert.CompleteSummaryModel
+@{
+}
+
+
+<h1>All Concerts</h1>
+
+<div>
+    <table class="table">
+        <tbody>
+            @foreach (var concert in @Model.Concerts)
+            {
+                <tr>
+
+                    <td>
+                        @concert.Name
+                    </td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="concertId" value="@concert.Id" />
+                            <button class="btn btn-primary">Details</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

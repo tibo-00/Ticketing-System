@@ -1,0 +1,112 @@
+﻿@page "{id}"
+@using System.Globalization;
+@model Ticketing_System.Pages.Concert.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Concert.Name</h1>
+
+
+<div class="container">
+    <h4>Details</h4>
+
+    <div class="row">
+        <div><strong>Name</strong></div>
+        <div>@Model.Concert.Name</div>
+    </div>
+    <div class="row">
+        <div><strong>Description</strong></div>
+        <div>@Model.Concert.Description </div>
+    </div>
+    <div class="row">
+        <div><strong>Price Adults</strong></div>
+        <div>@Model.Concert.AdultPrice.ToString("C", new CultureInfo("nl-BE"))</div>
+    </div>
+    <div class="row">
+        <div><strong>Price Children</strong></div>
+        <div>@Model.Concert.ChildPrice.ToString("C", new CultureInfo("nl-BE")) </div>
+    </div>
+    <form method="post" asp-page-handler="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger">Delete</button>
+    </form>
+</div>
+
+<div class="container">
+    <h4>Performaces</h4>
+    <br />
+    <form method="post" asp-page-handler="Save">
+        <div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="form-group">
+            <label asp-for="InputModel.StartTime" class="control-label"></label>
+            <input asp-for="InputModel.StartTime" class="form-control" />
+            <span asp-validation-for="InputModel.StartTime" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="InputModel.SelectedConcertHall" class="control-label"></label>
+            <select asp-for="InputModel.SelectedConcertHall" asp-items="@(new SelectList(Model.ConcertHalls, "Id", "Name"))" class="form-control">
+                <option value="">Select one...</option>
+            </select>
+            <span asp-validation-for="InputModel.SelectedConcertHall" class="text-danger"></span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+
+    <div>
+        <table class="table w-100">
+            <thead>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Hall
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var performance in @Model.Performances)
+                {
+                    <tr>
+                        <td>
+                            @performance.StartTime.ToString("dd MMMM yyyy")
+                        </td>
+                        <td>
+                            @performance.StartTime.ToString("HH:mm")
+                        </td>
+                        <td>
+                            @performance.ConcertHall.Name
+                        </td>
+                        <td>
+                            @if (@performance.StartTime > DateTime.Now)
+                            {
+                                <form method="post">
+                                    <input type="hidden" asp-for="Id"/>
+                                    <input type="hidden" name="performanceId" value="@performance.Id" />
+                                    <button class="btn btn-success" asp-page-handler="Book">Book Now!</button> |
+                                    <button class="btn btn-danger" asp-page-handler="Remove">Remove</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ticketing System", "Ticketing System\Ticketing System.csproj", "{7785A49E-DCFB-4204-B975-AFFB8A0387C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{31FA6B91-4619-4858-B226-4DBCEB2C12F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D35E23DF-523B-438F-842C-9173FE221A7F}"
+	ProjectSection(SolutionItems) = preProject
+		compose-dev.yaml = compose-dev.yaml
+		compose.yaml = compose.yaml
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7785A49E-DCFB-4204-B975-AFFB8A0387C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7785A49E-DCFB-4204-B975-AFFB8A0387C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7785A49E-DCFB-4204-B975-AFFB8A0387C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7785A49E-DCFB-4204-B975-AFFB8A0387C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31FA6B91-4619-4858-B226-4DBCEB2C12F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31FA6B91-4619-4858-B226-4DBCEB2C12F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31FA6B91-4619-4858-B226-4DBCEB2C12F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31FA6B91-4619-4858-B226-4DBCEB2C12F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5851B23A-A702-4C06-A1D4-A6080E4CDAC1}
+	EndGlobalSection
+EndGlobal
